@@ -7,6 +7,21 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+    <script>
+        // Atualizar data do boletim automaticamente
+        document.addEventListener('DOMContentLoaded', function() {
+            const meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+            const agora = new Date();
+            const mesAtual = meses[agora.getMonth()];
+            const anoAtual = String(agora.getFullYear()).slice(-2);
+            const dataFormatada = `${mesAtual}/${anoAtual}`;
+            
+            const elementoData = document.getElementById('mes-ano');
+            if (elementoData) {
+                elementoData.textContent = dataFormatada;
+            }
+        });
+    </script>
 </head>
 <body>
     <div class="page">
@@ -114,7 +129,7 @@
             `${meses[hoje.getMonth()]}/${hoje.getFullYear().toString().substr(-2)}`;
 
         // Criar Sankey Diagram com Plotly
-                                                                                                                                                                const sankeyData = {
+                                                                                                                                                                        const sankeyData = {
             type: "sankey",
             orientation: "h",
             node: {
