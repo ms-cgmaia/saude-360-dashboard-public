@@ -1,0 +1,402 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+
+.page {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* Header azul */
+.header {
+    background: #183eff;
+    padding: 0px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.logo {
+    height: 120px;
+    width: auto;
+}
+
+.header-divider {
+    width: 4px;
+    height: 70px;
+    background: linear-gradient(180deg, #ffa500 0%, #ffa500 50%, white 50%, white 100%);
+    border-radius: 2px;
+}
+
+.header-text {
+    color: white;
+}
+
+.header-text h1 {
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.header-text h1 .line1 {
+    font-size: 19px;
+}
+
+.header-text h1 .line2 {
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.header-text h1 .line3 {
+    font-size: 17px;
+    font-weight: 300;
+}
+
+.boletim-badge {
+    background: #6AB04C;
+    padding: 15px 30px 15px 30px;
+    border-radius: 0 0 50% 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: relative;
+    margin-top: -50px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.boletim-badge .boletim-label {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 0px;
+    line-height: 1;
+    letter-spacing: 1px;
+}
+
+.boletim-badge .boletim-number {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 2px 0;
+    line-height: 0.9;
+}
+
+.boletim-badge .boletim-date {
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 0px;
+    line-height: 1;
+}
+
+/* Conteúdo */
+.content {
+    padding: 30px 40px 40px;
+}
+
+.intro-text {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.intro-text a {
+    color: #183eff;
+    text-decoration: underline;
+}
+
+/* Seção de Componente */
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #183eff;
+    font-weight: bold;
+}
+
+.section-title::before {
+    content: '▶';
+    color: #183eff;
+    font-size: 14px;
+}
+
+.subtitle {
+    color: #6AB04C;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Card container para os gráficos */
+.chart-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: box-shadow 0.3s ease;
+}
+
+.chart-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+/* Sankey container */
+.sankey-container {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    min-height: 500px;
+    position: relative;
+}
+
+#sankeyChart {
+    width: 100%;
+    height: 500px;
+}
+
+/* Sankey custom visualization */
+.flow-diagram {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+    position: relative;
+}
+
+.flow-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 1;
+}
+
+.flow-node {
+    background: #183eff;
+    border-radius: 8px;
+    padding: 15px 20px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.flow-node.orange {
+    background: #D2691E;
+}
+
+.flow-node.green {
+    background: #6AB04C;
+}
+
+.flow-node.blue {
+    background: #183eff;
+}
+
+.flow-node.lightblue {
+    background: #5B9BD5;
+}
+
+.flow-node.gray {
+    background: #999;
+}
+
+.flow-node-title {
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.flow-node-value {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.flow-node-percent {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.flow-legend {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+}
+
+.legend-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.legend-value {
+    font-weight: bold;
+    color: #333;
+}
+
+.legend-change {
+    font-size: 11px;
+    color: #666;
+}
+
+/* Tabela de Equipes */
+.equipes-section {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.equipes-title {
+    color: #6AB04C;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.equipes-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 13px;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.equipes-table thead td {
+    font-weight: 600;
+    color: #333;
+    padding: 12px 15px;
+    text-align: center;
+    background: #f8f9fa;
+    font-size: 13px;
+    border-bottom: none;
+}
+
+.equipes-table thead td:first-child {
+    text-align: left;
+}
+
+.equipes-table tbody td {
+    padding: 14px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    background: white;
+}
+
+.equipes-table tbody tr:hover {
+    background: #fafafa;
+}
+
+.equipes-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.equipes-table .label-col {
+    color: #555;
+    font-weight: 500;
+    text-align: left;
+}
+
+.equipes-table .value-col {
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    color: #183eff;
+}
+
+.equipes-table .change-col {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.equipes-table .change-col.positive {
+    color: #28a745;
+}
+
+.equipes-table .change-col.negative {
+    color: #dc3545;
+}
+
+/* Gráfico de barras */
+.regiao-section {
+    margin-top: 10px;
+}
+
+.regiao-title {
+    color: #6AB04C;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.chart-container {
+    height: 400px;
+    position: relative;
+}
+
+/* Rodapé colorido */
+.footer-bar {
+    height: 18px;
+    background: linear-gradient(90deg, 
+        #183eff 0%, #183eff 33.33%,
+        #6AB04C 33.33%, #6AB04C 66.66%,
+        #E74C3C 66.66%, #E74C3C 100%
+    );
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .content {
+        padding: 20px;
+    }
+
+    .chart-card, .sankey-container, .equipes-section {
+        padding: 15px;
+    }
+}
