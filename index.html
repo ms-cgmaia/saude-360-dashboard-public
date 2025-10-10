@@ -3,22 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boletim N° 1 - Monitoramento SAPS</title>
+    <title>Boletim N° 10 - Monitoramento SAPS</title>
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
-    <script>
-        // Atualizar data do boletim automaticamente
+                                            <script>
+        // Atualizar data e número do boletim automaticamente
         document.addEventListener('DOMContentLoaded', function() {
             const meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
             const agora = new Date();
-            const mesAtual = meses[agora.getMonth()];
+            const mesIndex = agora.getMonth();
+            const mesAtual = meses[mesIndex];
             const anoAtual = String(agora.getFullYear()).slice(-2);
             const dataFormatada = `${mesAtual}/${anoAtual}`;
-            
+
             const elementoData = document.getElementById('mes-ano');
             if (elementoData) {
                 elementoData.textContent = dataFormatada;
+            }
+
+            const numeroBoletim = mesIndex + 1;
+            const elementoNumero = document.querySelector('.boletim-number');
+            if (elementoNumero) {
+                elementoNumero.textContent = `N° ${numeroBoletim}`;
+            }
+
+            const titulo = document.querySelector('title');
+            if (titulo) {
+                titulo.textContent = `Boletim N° ${numeroBoletim} - Monitoramento SAPS`;
             }
         });
     </script>
@@ -40,8 +52,8 @@
             </div>
             <div class="boletim-badge">
                 <div class="boletim-label">Boletim</div>
-                <div class="boletim-number">N° 1</div>
-                <div class="boletim-date" id="mes-ano">ago/25</div>
+                <div class="boletim-number">N° 10</div>
+                <div class="boletim-date" id="mes-ano">out/25</div>
             </div>
         </div>
 
@@ -416,7 +428,7 @@
             `${meses[hoje.getMonth()]}/${hoje.getFullYear().toString().substr(-2)}`;
 
         // Criar Sankey Diagram com Plotly
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        const sankeyData = {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                const sankeyData = {
             type: "sankey",
             orientation: "h",
             node: {
