@@ -27,6 +27,53 @@ body {
     color: white;
 }
 
+/* Botão de impressão flutuante */
+.print-button-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 56px;
+    height: 56px;
+    background: rgba(24, 62, 255, 0.4);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(24, 62, 255, 0.2);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+}
+
+.print-button-float:hover {
+    background: rgba(24, 62, 255, 0.7);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(24, 62, 255, 0.4);
+}
+
+.print-button-float:active {
+    transform: translateY(0);
+}
+
+.print-button-float svg {
+    flex-shrink: 0;
+}
+
+/* Regras de impressão - preservar formatação exata */
+@page {
+    size: A4;
+    margin: 0.5in;
+}
+
+@media print {
+    .print-button-float {
+        display: none !important;
+    }
+}
+
 .header-left {
     display: flex;
     align-items: center;
