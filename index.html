@@ -162,11 +162,90 @@
                         </tbody>
                     </table>
             </div>
-        </div>
+
+            <!-- Visão Geral dos Indicadores de Qualidade -->
+            <div class="indicadores-section">
+                <h2 class="indicadores-main-title">▶ Visão Geral dos Indicadores de Qualidade</h2>
+                
+                <div class="indicadores-header">
+                    <span class="indicadores-subtitle">Distribuição das equipes - Classificação (%)</span>
+                </div>
+                
+                <div class="indicadores-charts-wrapper">
+                    <div class="indicadores-barras">
+                        <canvas id="indicadoresChart"></canvas>
+                    </div>
+                    
+                    <div class="indicadores-heatmap">
+                        <div class="heatmap-header">
+                            <span class="heatmap-title">▶ Desempenho Regional</span>
+                        </div>
+                        <div class="heatmap-body">
+                            <div class="heatmap-row">
+                                                                <div class="heatmap-cell" style="background-color: #90caf9">26.6</div>
+                                <div class="heatmap-cell" style="background-color: #90caf9">32.5</div>
+                                <div class="heatmap-cell" style="background-color: #42a5f5">40.6</div>
+                                <div class="heatmap-cell" style="background-color: #90caf9">36.6</div>
+                                <div class="heatmap-cell" style="background-color: #90caf9">27.9</div>
+                            </div>
+                            <div class="heatmap-row">
+                                                                <div class="heatmap-cell" style="background-color: #90caf9">20.8</div>
+                                <div class="heatmap-cell" style="background-color: #90caf9">21.7</div>
+                                <div class="heatmap-cell" style="background-color: #e3f2fd">18.5</div>
+                                <div class="heatmap-cell" style="background-color: #90caf9">23.2</div>
+                                <div class="heatmap-cell" style="background-color: #90caf9">23.3</div>
+                            </div>
+                            <div class="heatmap-row">
+                                                                <div class="heatmap-cell" style="background-color: #90caf9">38.3</div>
+                                <div class="heatmap-cell" style="background-color: #90caf9">39.1</div>
+                                <div class="heatmap-cell" style="background-color: #90caf9">38.0</div>
+                                <div class="heatmap-cell" style="background-color: #90caf9">37.9</div>
+                                <div class="heatmap-cell" style="background-color: #42a5f5">41.1</div>
+                            </div>
+                            <div class="heatmap-row">
+                                                                <div class="heatmap-cell" style="background-color: #42a5f5">57.0</div>
+                                <div class="heatmap-cell" style="background-color: #1976d2">60.4</div>
+                                <div class="heatmap-cell" style="background-color: #1976d2">61.9</div>
+                                <div class="heatmap-cell" style="background-color: #42a5f5">56.4</div>
+                                <div class="heatmap-cell" style="background-color: #42a5f5">57.5</div>
+                            </div>
+                            <div class="heatmap-row">
+                                                                <div class="heatmap-cell" style="background-color: #1976d2">65.6</div>
+                                <div class="heatmap-cell" style="background-color: #1976d2">66.8</div>
+                                <div class="heatmap-cell" style="background-color: #1976d2">70.3</div>
+                                <div class="heatmap-cell" style="background-color: #1976d2">62.9</div>
+                                <div class="heatmap-cell" style="background-color: #1976d2">65.1</div>
+                            </div>
+                            <div class="heatmap-row">
+                                                                <div class="heatmap-cell" style="background-color: #42a5f5">52.9</div>
+                                <div class="heatmap-cell" style="background-color: #42a5f5">52.7</div>
+                                <div class="heatmap-cell" style="background-color: #42a5f5">47.3</div>
+                                <div class="heatmap-cell" style="background-color: #42a5f5">49.9</div>
+                                <div class="heatmap-cell" style="background-color: #42a5f5">52.2</div>
+                            </div>
+                            <div class="heatmap-row">
+                                                                <div class="heatmap-cell" style="background-color: #90caf9">27.8</div>
+                                <div class="heatmap-cell" style="background-color: #90caf9">29.0</div>
+                                <div class="heatmap-cell" style="background-color: #90caf9">27.8</div>
+                                <div class="heatmap-cell" style="background-color: #90caf9">27.8</div>
+                                <div class="heatmap-cell" style="background-color: #90caf9">29.7</div>
+                            </div>
+                        </div>
+                        <div class="heatmap-labels">
+                            <div class="label-cell">CENTRO-OESTE</div>
+                            <div class="label-cell">NORDESTE</div>
+                            <div class="label-cell">NORTE</div>
+                            <div class="label-cell">SUDESTE</div>
+                            <div class="label-cell">SUL</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         <!-- Rodapé colorido -->
-        <div class="footer-bar"></div>
+        
     </div>
+    <div class="footer-bar"></div>
 
     <script>
         // Atualizar mês/ano automaticamente
@@ -176,7 +255,7 @@
             `${meses[hoje.getMonth()]}/${hoje.getFullYear().toString().substr(-2)}`;
 
         // Criar Sankey Diagram com Plotly
-                                                                                                                                                                                                                                                                                                                        const sankeyData = {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                const sankeyData = {
             type: "sankey",
             orientation: "h",
             node: {
@@ -400,6 +479,113 @@
         window.addEventListener('resize', function() {
             canvas.width = container.clientWidth;
             // Redesenhar tudo (opcional)
+        });
+    </script>
+
+    <!-- JavaScript para Gráfico de Indicadores de Qualidade -->
+    <script>
+        // Dados do gráfico de barras horizontais
+        const indicadoresData = {
+            labels: ['1. Mais Acesso à APS ▶', '2. Desenvolvimento Infantil ▶', '3. Cuidado com a Gestante e Puérpera ▶', '4. Cuidado da pessoa com Diabetes ▶', '5. Cuidado da pessoa com Hipertensão ▶', '6. Cuidado integral da Pessoa Idosa ▶', '7. Prevenção do Câncer na mulher ▶'],
+            datasets: [
+                {
+                    label: 'Ótimo',
+                    data: [15, 0, 12, 7, 23, 2, 0],
+                    backgroundColor: '#2E7D4F',
+                    borderWidth: 0
+                },
+                {
+                    label: 'Bom',
+                    data: [20, 30, 0, 63, 57, 52, 0],
+                    backgroundColor: '#5CB85C',
+                    borderWidth: 0
+                },
+                {
+                    label: 'Suficiente',
+                    data: [22, 0, 73, 25, 16, 40, 69],
+                    backgroundColor: '#F0AD4E',
+                    borderWidth: 0
+                },
+                {
+                    label: 'Regular',
+                    data: [43, 68, 15, 5, 4, 6, 31],
+                    backgroundColor: '#D9534F',
+                    borderWidth: 0
+                }
+            ]
+        };
+
+        const indicadoresOptions = {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        boxWidth: 15,
+                        padding: 15,
+                        font: {
+                            size: 11
+                        }
+                    }
+                },
+                title: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    beginAtZero: true,
+                    max: 100,
+                    grid: {
+                        color: '#e0e0e0',
+                        lineWidth: 1
+                    },
+                    ticks: {
+                        font: {
+                            size: 10
+                        }
+                    }
+                },
+                y: {
+                    stacked: true,
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 11
+                        }
+                    }
+                }
+            },
+            elements: {
+                bar: {
+                    borderRadius: 0
+                }
+            },
+            layout: {
+                padding: {
+                    top: 10,
+                    bottom: 10
+                }
+            },
+            datasets: {
+                bar: {
+                    categoryPercentage: 0.8,
+                    barPercentage: 0.6
+                }
+            }
+        };
+
+        // Criar o gráfico de barras horizontais
+        const indicadoresCtx = document.getElementById('indicadoresChart').getContext('2d');
+        const indicadoresChart = new Chart(indicadoresCtx, {
+            type: 'bar',
+            data: indicadoresData,
+            options: indicadoresOptions
         });
     </script>
 </body>

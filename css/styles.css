@@ -320,11 +320,14 @@ body {
 .equipes-table tbody td {
     padding: 14px 15px;
     border-bottom: 1px solid #f0f0f0;
-    background: white;
+}
+
+.equipes-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
 }
 
 .equipes-table tbody tr:hover {
-    background: #fafafa;
+    background-color: #e9ecef;
 }
 
 .equipes-table tbody tr:last-child td {
@@ -474,6 +477,174 @@ body {
     );
 }
 
+/* Seção de Indicadores de Qualidade */
+.indicadores-section {
+    margin: 30px 0;
+    background: white;
+    padding: 25px 40px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: box-shadow 0.3s ease;
+}
+
+.indicadores-section:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.indicadores-main-title {
+    color: #183eff;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.indicadores-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.indicadores-subtitle {
+    color: #7ED321;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.indicadores-charts-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-top: 15px;
+}
+
+.indicadores-barras {
+    flex: 3;
+    height: 420px;
+    background: white;
+}
+
+.indicadores-heatmap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.heatmap-header {
+    margin-bottom: 10px;
+    margin-top: 0px;
+    position: relative;
+    z-index: 10;
+}
+
+.heatmap-title {
+    color: #7ED321;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    top: -30px;
+    left: 0;
+    z-index: 20;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+/* Estrutura do Heatmap */
+.heatmap-body {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+.heatmap-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+    align-items: center;
+    height: 42px;
+    margin-bottom: 2px;
+}
+
+.heatmap-cell {
+    color: white;
+    font-weight: bold;
+    padding: 8px 4px;
+    text-align: center;
+    font-size: 12px;
+    border-radius: 4px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Labels das regiões abaixo do heatmap */
+.heatmap-labels {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    margin-top: 8px;
+}
+
+.label-cell {
+    color: #0066cc;
+    font-weight: bold;
+    padding: 4px;
+    text-align: center;
+    font-size: 9px;
+    text-transform: uppercase;
+}
+
+/* Tabela de Desempenho Regional */
+.desempenho-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.desempenho-table thead td {
+    background: #e3f2fd;
+    font-weight: bold;
+    color: #1976d2;
+    text-align: center;
+    padding: 8px 6px;
+    font-size: 11px;
+    border: 1px solid #90caf9;
+}
+
+.desempenho-table tbody td {
+    padding: 8px 6px;
+    border: 1px solid #e3f2fd;
+    text-align: center;
+    font-size: 11px;
+}
+
+.desempenho-table .indicador-col {
+    text-align: left;
+    font-weight: 500;
+    color: #333;
+    background: #fafafa;
+    padding-left: 12px;
+    width: 40%;
+}
+
+.desempenho-table .regiao-col {
+    background: #e3f2fd;
+    color: #1565c0;
+    font-weight: 500;
+    width: 12%;
+}
+
+.desempenho-table tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
 /* Responsivo */
 @media (max-width: 768px) {
     .header {
@@ -485,7 +656,16 @@ body {
         padding: 20px;
     }
 
-    .chart-card, .sankey-container, .equipes-section {
+    .chart-card, .sankey-container, .equipes-section, .indicadores-section {
         padding: 15px;
+    }
+
+    .indicadores-charts-wrapper {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .indicadores-barras {
+        height: 300px;
     }
 }
