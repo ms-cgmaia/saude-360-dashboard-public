@@ -86,11 +86,11 @@ body {
 
     /* Escala otimizada para melhor aproveitamento A4 */
     body {
-        transform: scale(0.87) !important;
+        transform: scale(0.86) !important;
         transform-origin: top left !important;
         width: 139% !important; /* Compensa a escala para usar espaço total */
-        margin: 0 !important;
-        padding: 0 !important;
+        margin: 10 !important;
+        padding: 10 !important;
         overflow: hidden !important;
     }
 
