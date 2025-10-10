@@ -353,6 +353,56 @@
                 </div>
             </div>
 
+            <!-- Municípios com Pontuação Zerada -->
+            <div class="chart-card">
+                <h2 class="section-title">Municípios que apresentaram pontuação zerada em todos os indicadores de qualidade, simultaneamente, no mês de referência</h2>
+                
+                <div class="municipios-zerados-container">
+                    <table class="municipios-zerados-table">
+                        <thead>
+                            <tr>
+                                <td class="uf-col">UF</td>
+                                <td class="codigo-col">Cód. IBGE</td>
+                                <td class="municipio-col">Município</td>
+                                <td class="observacao-col">Observação</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="uf-col">MG</td>
+                            <td class="codigo-col">313730</td>
+                            <td class="municipio-col">LAGOA DOS PATOS</td>
+                            <td class="observacao-col">Tem apenas uma eAP 20h.</td>
+                        </tr>
+                        <tr>
+                            <td class="uf-col">RS</td>
+                            <td class="codigo-col">430225</td>
+                            <td class="municipio-col">BOA VISTA DO SUL</td>
+                            <td class="observacao-col">Tem apenas duas eSFs.</td>
+                        </tr>
+                        <tr>
+                            <td class="uf-col">SP</td>
+                            <td class="codigo-col">350200</td>
+                            <td class="municipio-col">ANALÂNDIA</td>
+                            <td class="observacao-col">Tem apenas duas eAPs 20h.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="observacao-footer">
+                        <p><strong>Observação:</strong> as equipes dos municípios listados estão recebendo o componente de qualidade referente à classificação "Bom", conforme § 3°, art. 12 da <u>Portaria GM/MS n° 3.493, de 10 de abril de 2024</u>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Evolução Municipal -->
+            <div class="chart-card">
+                <h2 class="section-title">Evolução mensal dos municípios</h2>
+                <div class="chart-content">
+                    <canvas id="evolucao-municipal-chart" style="height: 420px;"></canvas>
+                </div>
+            </div>
+
         <!-- Rodapé colorido -->
         
     </div>
@@ -366,7 +416,7 @@
             `${meses[hoje.getMonth()]}/${hoje.getFullYear().toString().substr(-2)}`;
 
         // Criar Sankey Diagram com Plotly
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                const sankeyData = {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        const sankeyData = {
             type: "sankey",
             orientation: "h",
             node: {
@@ -698,6 +748,133 @@
             data: indicadoresData,
             options: indicadoresOptions
         });
-    </script>
+
+        // Dados do gráfico de evolução municipal
+        const evolucaoData = {
+            labels: ['JAN/2025', 'FEV/2025', 'MAR/2025', 'ABR/2025', 'MAI/2025', 'JUN/2025', 'JUL/2025'],
+            datasets: [
+                {
+                    label: 'Municípios que não aparecem no CVAT',
+                    data: [14, 13, 12, 9, 6, 7, 5],
+                    backgroundColor: '#1976d2',
+                    borderWidth: 0,
+                    borderRadius: 4
+                },
+                {
+                    label: 'Municípios com todos indicadores zerados',
+                    data: [0, 1, 1, 1, 5, 3, 3],
+                    backgroundColor: '#90caf9',
+                    borderWidth: 0,
+                    borderRadius: 4
+                }
+            ]
+        };
+
+        const evolucaoOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    top: 40,
+                    bottom: 0
+                }
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        boxWidth: 15,
+                        padding: 15,
+                        font: {
+                            size: 11
+                        }
+                    }
+                },
+                title: {
+                    display: false
+                }
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 10
+                        }
+                    }
+                },
+                y: {
+                    stacked: true,
+                    beginAtZero: true,
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 10
+                        },
+                        stepSize: 1
+                    }
+                }
+            },
+            elements: {
+                bar: {
+                    borderRadius: 4
+                }
+            }
+        };
+
+        const evolucaoLabelsPlugin = {
+            id: 'evolucaoLabelsPlugin',
+            afterDatasetsDraw(chart) {
+                const { ctx } = chart;
+                ctx.save();
+                chart.data.datasets.forEach((dataset, datasetIndex) => {
+                    const meta = chart.getDatasetMeta(datasetIndex);
+                    if (!meta || meta.hidden) {
+                        return;
+                    }
+                    meta.data.forEach((element, index) => {
+                        const value = dataset.data[index];
+                        if (value === null || value === undefined || Number(value) === 0) {
+                            return;
+                        }
+                        const position = element.tooltipPosition();
+                        const barHeight = element.base - element.y;
+                        const x = element.x ?? position.x;
+                        const labelColor = datasetIndex === 0 ? '#ffffff' : '#111827';
+                        ctx.fillStyle = labelColor;
+                        ctx.font = '600 11px "Inter", system-ui, -apple-system, sans-serif';
+                        ctx.textAlign = 'center';
+
+                        if (datasetIndex === 0) {
+                            // Segmento inferior: centralizar dentro da barra
+                            const y = element.base - barHeight / 2;
+                            ctx.textBaseline = 'middle';
+                            ctx.fillText(value, x, y);
+                        } else {
+                            // Segmento superior: exibir acima da barra
+                            const offset = Math.min(16, Math.max(4, barHeight * 0.4));
+                            ctx.textBaseline = 'bottom';
+                            ctx.fillText(value, x, element.y - offset);
+                        }
+                    });
+                });
+                ctx.restore();
+            }
+        };
+
+        // Criar o gráfico de evolução municipal
+        const evolucaoCtx = document.getElementById('evolucao-municipal-chart').getContext('2d');
+        const evolucaoChart = new Chart(evolucaoCtx, {
+            type: 'bar',
+            data: evolucaoData,
+            options: evolucaoOptions,
+            plugins: [evolucaoLabelsPlugin]
+        });
+</script>
 </body>
 </html>

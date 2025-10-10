@@ -477,6 +477,95 @@ body {
     );
 }
 
+/* Tabela de Municípios com Pontuação Zerada */
+.municipios-zerados-container {
+    margin: 20px 0;
+}
+
+.municipios-zerados-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.municipios-zerados-table thead td {
+    background: #f8f9fa;
+    font-weight: 600;
+    padding: 12px 15px;
+    border-bottom: 2px solid #ddd;
+    color: #495057;
+    text-align: left;
+}
+
+.municipios-zerados-table tbody td {
+    padding: 14px 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.municipios-zerados-table tbody .uf-col {
+    font-weight: 600;
+    color: #495057;
+    text-align: center;
+    width: 60px;
+}
+
+.municipios-zerados-table tbody .codigo-col {
+    font-family: 'Courier New', monospace;
+    color: #6c757d;
+    text-align: center;
+    width: 120px;
+}
+
+.municipios-zerados-table tbody .municipio-col {
+    font-weight: 500;
+    color: #343a40;
+    width: 200px;
+}
+
+.municipios-zerados-table tbody .observacao-col {
+    color: #6c757d;
+    font-style: italic;
+}
+
+.municipios-zerados-table thead .uf-col {
+    text-align: center;
+    width: 60px;
+}
+
+.municipios-zerados-table thead .codigo-col {
+    text-align: center;
+    width: 120px;
+}
+
+.municipios-zerados-table thead .municipio-col {
+    width: 200px;
+}
+
+.municipios-zerados-table thead .observacao-col {
+    text-align: left;
+}
+
+.municipios-zerados-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.municipios-zerados-table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.observacao-footer {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+}
+
+.observacao-footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #495057;
+}
+
 /* Seção de Indicadores de Qualidade */
 .indicadores-section {
     margin: 30px 0;
