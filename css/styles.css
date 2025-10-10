@@ -375,6 +375,95 @@ body {
     position: relative;
 }
 
+/* Tabela de Municípios Ausentes - mesmo design da tabela de equipes */
+.municipios-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    font-family: Arial, sans-serif;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.municipios-table thead td {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #495057;
+    padding: 12px 8px;
+    font-size: 13px;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.municipios-table tbody td {
+    padding: 12px 8px;
+    border-bottom: 1px solid #dee2e6;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+/* Formatação específica para dados nas colunas (tbody) */
+.municipios-table tbody .uf-col {
+    text-align: center;
+    font-weight: 600;
+    color: #0047AB;
+    width: 8%;
+}
+
+.municipios-table tbody .codigo-col {
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    color: #666;
+    width: 15%;
+}
+
+.municipios-table tbody .municipio-col {
+    font-weight: 500;
+    color: #0047AB;
+    width: 25%;
+    padding-left: 12px;
+}
+
+.municipios-table tbody .motivo-col {
+    color: #555;
+    line-height: 1.4;
+    width: 52%;
+}
+
+/* Formatação para cabeçalho (thead) - com alinhamentos específicos */
+.municipios-table thead .uf-col {
+    text-align: center;
+    font-weight: 600;
+    color: #495057;
+}
+
+.municipios-table thead .codigo-col {
+    text-align: center;
+    font-weight: 600;
+    color: #495057;
+}
+
+.municipios-table thead .municipio-col {
+    text-align: left;
+    font-weight: 600;
+    color: #495057;
+    padding-left: 12px;
+}
+
+.municipios-table thead .motivo-col {
+    text-align: left;
+    font-weight: 600;
+    color: #495057;
+}
+
+.municipios-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.municipios-table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
 /* Rodapé colorido */
 .footer-bar {
     height: 18px;

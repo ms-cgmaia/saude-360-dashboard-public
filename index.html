@@ -115,6 +115,53 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Tabela de Municípios Ausentes no CVAT -->
+            <div class="equipes-section">
+                <h3 class="equipes-title" style="color: #d32f2f;">Municípios ausentes no CVAT</h3>
+                    <table class="municipios-table">
+                        <thead>
+                            <tr>
+                                <td class="uf-col">UF</td>
+                                <td class="codigo-col">Cód. IBGE</td>
+                                <td class="municipio-col">Município</td>
+                                <td class="motivo-col">Motivo</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="uf-col">MG</td>
+                            <td class="codigo-col">314315</td>
+                            <td class="municipio-col">MONTE FORMOSO</td>
+                            <td class="motivo-col">Possui apenas duas eSFs suspensas por não envio de produção</td>
+                        </tr>
+                        <tr>
+                            <td class="uf-col">MG</td>
+                            <td class="codigo-col">316650</td>
+                            <td class="municipio-col">SERRA AZUL DE MINAS</td>
+                            <td class="motivo-col">Duas eSFs com composição inválida.</td>
+                        </tr>
+                        <tr>
+                            <td class="uf-col">MT</td>
+                            <td class="codigo-col">510850</td>
+                            <td class="municipio-col">VERA</td>
+                            <td class="motivo-col">Possui apenas três eSFs suspensas por não envio de produção</td>
+                        </tr>
+                        <tr>
+                            <td class="uf-col">PA</td>
+                            <td class="codigo-col">150570</td>
+                            <td class="municipio-col">PONTA DE PEDRAS</td>
+                            <td class="motivo-col">Possui apenas oito eSFRs homologadas.</td>
+                        </tr>
+                        <tr>
+                            <td class="uf-col">TO</td>
+                            <td class="codigo-col">171370</td>
+                            <td class="municipio-col">MONTE SANTO DO TOCANTINS</td>
+                            <td class="motivo-col">Possui apenas uma eSF suspenso por órgão de controle</td>
+                        </tr>
+                        </tbody>
+                    </table>
+            </div>
         </div>
 
         <!-- Rodapé colorido -->
@@ -129,7 +176,7 @@
             `${meses[hoje.getMonth()]}/${hoje.getFullYear().toString().substr(-2)}`;
 
         // Criar Sankey Diagram com Plotly
-                                                                                                                                                                        const sankeyData = {
+                                                                                                                                                                                                                                                                                                                        const sankeyData = {
             type: "sankey",
             orientation: "h",
             node: {
