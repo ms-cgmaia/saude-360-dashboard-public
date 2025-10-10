@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
-                                                                    <script>
+                                                                                                                                                                            <script>
         // Atualizar data e número do boletim automaticamente
         document.addEventListener('DOMContentLoaded', function() {
             const meses = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
@@ -428,7 +428,7 @@
             `${meses[hoje.getMonth()]}/${hoje.getFullYear().toString().substr(-2)}`;
 
         // Criar Sankey Diagram com Plotly
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                const sankeyData = {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                const sankeyData = {
             type: "sankey",
             orientation: "h",
             node: {
@@ -890,7 +890,7 @@
 </script>
 
 <!-- Botão de impressão flutuante -->
-<button id="printButton" class="print-button-float" onclick="imprimirPagina()" title="Imprimir Dashboard">
+<button id="printButton" class="print-button-float" onclick="imprimirPagina()" title="Imprimir Dashboard (ao imprimir, selecione Margens: Nenhum na caixa de diálogo)">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M6 9V2h12v7M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v8H6v-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
@@ -898,6 +898,7 @@
 
 <script>
 function imprimirPagina() {
+    alert('DICA IMPORTANTE:\n\nAo imprimir, selecione a opção "Margens: Nenhum" na caixa de diálogo para melhor resultado!');
     console.log('Botão clicado - iniciando impressão');
     try {
         window.print();
@@ -907,6 +908,10 @@ function imprimirPagina() {
     }
 }
 </script>
+
+
+<!-- Footer-bar para impressão -->
+<div class="footer-bar-print"></div>
 
 </body>
 </html>
