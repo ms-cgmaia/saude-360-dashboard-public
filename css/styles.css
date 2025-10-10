@@ -543,7 +543,7 @@ body {
     font-weight: bold;
     position: absolute;
     top: -30px;
-    left: 0;
+    left: -10px;
     z-index: 20;
     background: rgba(255, 255, 255, 0.9);
     padding: 2px 5px;
@@ -570,7 +570,7 @@ body {
 }
 
 .heatmap-arrow {
-    color: #7ED321;
+    color: #d9d9d9;
     font-size: 14px;
     position: absolute;
     left: -25px;

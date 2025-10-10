@@ -167,7 +167,7 @@
                 <h2 class="indicadores-main-title">▶ Visão Geral dos Indicadores de Qualidade</h2>
                 
                 <div class="indicadores-header">
-                    <span class="indicadores-subtitle">Distribuição das equipes - Classificação (%)</span>
+                    <span class="indicadores-subtitle">▶ Distribuição das equipes - Classificação (%)</span>
                 </div>
                 
                 <div class="indicadores-charts-wrapper">
@@ -366,7 +366,7 @@
             `${meses[hoje.getMonth()]}/${hoje.getFullYear().toString().substr(-2)}`;
 
         // Criar Sankey Diagram com Plotly
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                const sankeyData = {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                const sankeyData = {
             type: "sankey",
             orientation: "h",
             node: {
@@ -597,7 +597,7 @@
     <script>
         // Dados do gráfico de barras horizontais
         const indicadoresData = {
-            labels: ['1. Mais Acesso à APS ▶', '2. Desenvolvimento Infantil ▶', '3. Cuidado com a Gestante e Puérpera ▶', '4. Cuidado da pessoa com Diabetes ▶', '5. Cuidado da pessoa com Hipertensão ▶', '6. Cuidado integral da Pessoa Idosa ▶', '7. Prevenção do Câncer na mulher ▶'],
+            labels: ['1. Mais Acesso à APS', '2. Desenvolvimento Infantil', '3. Cuidado com a Gestante e Puérpera', '4. Cuidado da pessoa com Diabetes', '5. Cuidado da pessoa com Hipertensão', '6. Cuidado integral da Pessoa Idosa', '7. Prevenção do Câncer na mulher'],
             datasets: [
                 {
                     label: 'Ótimo',
