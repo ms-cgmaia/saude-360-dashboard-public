@@ -566,6 +566,55 @@ body {
     align-items: center;
     height: 42px;
     margin-bottom: 2px;
+    position: relative;
+}
+
+.heatmap-arrow {
+    color: #7ED321;
+    font-size: 14px;
+    position: absolute;
+    left: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: bold;
+}
+
+/* Tooltip para o heatmap */
+.heatmap-cell {
+    cursor: pointer;
+    position: relative;
+}
+
+.heatmap-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1000;
+    margin-bottom: 5px;
+}
+
+.heatmap-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.9);
+}
+
+.heatmap-cell:hover .heatmap-tooltip {
+    opacity: 1;
 }
 
 .heatmap-cell {
